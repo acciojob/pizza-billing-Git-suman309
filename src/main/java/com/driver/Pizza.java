@@ -17,10 +17,10 @@ public class Pizza {
         // your code goes here
         if(isVeg){ //for veg
             this.price = 300;
-            this.topping =70;
+            this.topping = 70;
         }
         else{ //non
-            this.price =400;
+            this.price = 400;
             this.topping = 120;
         }
         //option just a good pratice to initilize
