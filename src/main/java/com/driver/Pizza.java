@@ -5,15 +5,21 @@ public class Pizza {
     private int price;
     private Boolean isVeg;
     private String bill;
+    private int cheese;
     private int topping;
     boolean isExtraCheeseAdded;
     boolean isExtraToopingAdded;
     boolean isBillCreated;
-    boolean isTakeAway;
+    boolean isBagAdded;
 
 
     public Pizza(Boolean isVeg){ //this will be called in deluxpizza super(isVeg;
         this.isVeg = isVeg;
+        //optional just a good pratice to initilize
+        this.isExtraCheeseAdded = false;
+        this.isExtraToopingAdded =false;
+        this.isBillCreated = false;
+        this.isBagAdded = false;
         // your code goes here
         if(isVeg){ //for veg
             this.price = 300;
@@ -23,12 +29,9 @@ public class Pizza {
             this.price = 400;
             this.topping = 120;
         }
-        //option just a good pratice to initilize
-        this.isExtraCheeseAdded = false;
-        this.isExtraToopingAdded =false;
-        this.isBillCreated = false;
-        this.isTakeAway = false;
+
         //bill
+        this.cheese = 80;
         this.bill = "Base Price Of The Pizza: "+this.price+"\n";
     }
 
@@ -40,7 +43,7 @@ public class Pizza {
         // your code goes here
         //this.price +=80; //wrong way if user invoke it multipal tym then it will add muulti
         if(!isExtraCheeseAdded){ //means extra chees not added then only it will run
-            this.price += 80;
+            this.price += this.cheese;
             this.isExtraCheeseAdded = true;
 
         }
@@ -56,9 +59,9 @@ public class Pizza {
 
     public void addTakeaway(){
         // your code goes here
-        if(!isTakeAway){
+        if(!isBagAdded){
             this.price +=20;
-            isTakeAway = true;
+            isBagAdded = true;
         }
     }
 
@@ -67,18 +70,17 @@ public class Pizza {
         //only do it if bill not created
         if(!isBillCreated) {
             if (isExtraCheeseAdded) {
-                this.bill += "Extra Cheese Added: 80" + "\n";
+                this.bill += "Extra Cheese Added: "+this.cheese + "\n";
             }
             if (isExtraToopingAdded) {
                 this.bill += "Extra Toppings Added: " +this.topping + "\n";
             }
-            if (isTakeAway) {
+            if (isBagAdded) {
                 this.bill += "Paperbag Added: 20" + "\n";
             }
-            this.bill += "Total Price: " + this.price;
+            this.bill += "Total Price: " + getPrice()+"\n";
             this.isBillCreated =true;
-            return this.bill;
         }
-       return "";
+        return this.bill;
     }
 }
